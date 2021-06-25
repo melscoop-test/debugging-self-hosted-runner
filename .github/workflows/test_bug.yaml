@@ -1,0 +1,36 @@
+name: self-hosted
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  test:
+    strategy:
+      matrix:
+        person:
+        - titi
+        - tata
+        - toto
+        - tutu
+        - tete
+        - foo
+        - 2titi
+        - 2tata
+        - 2toto
+        - 2tutu
+        - 2tete
+        - 2foo
+        - 3titi
+        - 3tata
+        - 3toto
+        - 3tutu
+        - 3tete
+        - 3foo
+    runs-on:
+    - self-hosted
+    - linux
+    - test-self-hosted-once
+    steps:
+    - name: sleep
+      run: sleep 10
+    - name: Send greeting
+      run: echo "Hello ${{ matrix.person }}!"
