@@ -27,8 +27,8 @@ jobs:
         - 3foo
     runs-on:
     - self-hosted
-    - linux
-    - test-self-hosted-once
+    - Linux
+
     steps:
     - name: sleep
       run: sleep 10
