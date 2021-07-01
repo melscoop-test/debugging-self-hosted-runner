@@ -1,13 +1,13 @@
 # debugging-self-hosted-runner
 ## The script
-This repository aims to show a bug we are facing by using self-hosted runners.
+This repository aims to show an issue we are facing by using self-hosted runners.
 
 It installs and run a self-hosted runner in a docker container with `./run.sh --once`
-When the runner finished his job and stop, we try to delete it with `./config.sh remove`. 
+When the runner finish the job and stop, we try to delete it with `./config.sh remove`. 
 Then it configures a new runner for the next action.
 
 ## The error
-A problem occurred, some time, when we try to remove a runner. It returns us an error, saying the job is busy, the same error occurred with the force delete API call. An action is linked to the runner even if he is offline and this fail the all workflows. 
+A problem occurred, some time, when we try to remove a runner. It returns us an error, saying the job is busy, the same error occurred with the force delete API call. An action is linked to the runner even if he is offline and this fail the whole workflow. 
 Error from the runner:
 ```
 Failed: Removing runner from the server
@@ -28,7 +28,7 @@ Error with the API:
 ```
 
 ## What we are expecting
-One of this call should delete the runner, even if an action is linked to it.
+One of this call should delete the runner, no action should be linked to this runner after the job has ran. And should delete it even if an action is linked to it.
 
 # Test it
 Start the script with
